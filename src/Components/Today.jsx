@@ -37,7 +37,7 @@ const BottomIcons = styled.div`
 `
 
 const BottomTemperature = styled.div`
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     width: calc(100% - 14px);
     display: flex; 
     justify-content: space-between;
@@ -48,7 +48,7 @@ const BottomHours = styled.div`
     width: calc(100% - 17px);
     display: flex; 
     justify-content: space-between;
-    margin-top: .8rem;
+    margin-top: 1rem;
     color: gray;
 `
 

@@ -38,11 +38,23 @@ function App() {
    }
 }, [weather])
 
+const weekDays = [
+  'Må', 
+  'Ti',
+  'On',
+  'To',
+  'Fr',
+  'Lö',
+  'Sö',
+]
+
   return (
     <Main>
       <Hero temperature={weather ? Math.round(weather.current.temp) : '-'}></Hero>
       <Today hourly={weather ? weather.hourly : undefined} icon={weather ? getIcon(weather.current.weather[0].icon) : unknown}/>
-      <Day temperature="22" day="Ti"/>
+      {weather ? weather.daily.map((day)=>(
+      <Day icon={getIcon(day.weather[0].icon)} temperature={Math.round(day.temp.day)} day={weekDays[new Date(day.dt * 1000).getDay()]}/>
+      )) : ""}
     </Main>
   );
 }
