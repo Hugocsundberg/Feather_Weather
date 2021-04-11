@@ -16,22 +16,24 @@ transform: translateX(-.6rem);
 
 const FixWidth = styled.div`
     width: 4rem;
-    text-align: right;
 `
 
 const Day = (props) => {
     return (
         <DayContainer top={"2rem"}>
             <Flex>
-                <Img src={props.icon} alt={props.icon_Alt}/>
                 <Flex>
                     <FixWidth>
-                        <Text>{`${props.temperature}°`}</Text>
+                        <Img src={props.icon} alt={props.icon_Alt}/>
                     </FixWidth>
                     <FixWidth>
-                        <Text>{`${props.day}`}</Text>
+                        <Text align={'left'}>{`${props.temperature}°`}</Text>
+                        <Text top=".3rem" align={'left'} size="1rem">{`${Math.round(props.wind)}m/s`}</Text>
                     </FixWidth>
                 </Flex>
+                    <FixWidth>
+                        <Text align={'right'}>{`${props.day}`}</Text>
+                    </FixWidth>
             </Flex>
         </DayContainer>        
     );

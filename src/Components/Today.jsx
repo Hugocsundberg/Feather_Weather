@@ -61,6 +61,16 @@ const P = styled.p`
     margin: 0;
 `
 
+const FixWidth = styled.div`
+    width: 4rem;
+`
+
+const Flex = styled.div`
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+`
+
 const Today = (props) => {
 
     const nineHours = []
@@ -75,8 +85,15 @@ const Today = (props) => {
         <DayContainer>
             <FlexContainer>
                 <Top>
-                    <Img src={props.icon} alt={props.icon_Alt}/>
-                    <Text>Nu</Text>
+                <Flex>
+                    <FixWidth>
+                        <Img src={props.icon} alt={props.icon_Alt}/>
+                    </FixWidth>
+                    <FixWidth>
+                        <Text top=".3rem" align={'left'}>{`${Math.round(props.wind)}m/s`}</Text>
+                    </FixWidth>
+                </Flex>
+                <Text>Nu</Text>
                 </Top>
                 <CenterDiv>
                     <BottomTemperature>
