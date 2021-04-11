@@ -18,7 +18,7 @@ transform: translateX(-.6rem);
 `
 
 const ImgSmall = styled.img`
-height: 2rem;
+height: 1.8rem;
 `
 
 const Top = styled.div`
@@ -37,14 +37,14 @@ const BottomIcons = styled.div`
 
 const BottomTemperature = styled.div`
     margin-top: 1.5rem;
-    width: calc(100% - 14px);
+    width: calc(100% - 0.9rem);
     display: flex; 
     justify-content: space-between;
-    transform: translateX(4px)
+    transform: translateX(0.25rem);
 `
 
 const BottomHours = styled.div`
-    width: calc(100% - 17px);
+    width: calc(100% - 1rem);
     display: flex; 
     justify-content: space-between;
     margin-top: 1rem;
