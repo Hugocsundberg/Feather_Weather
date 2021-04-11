@@ -18,8 +18,8 @@ import nt_tstorms from "./images/weather_icons/nt_tstorms.svg";
 //Unknown
 import unknown from "./images/weather_icons/unknown.svg"
 
-export const getIcon = (weatherCode) => {
-    switch(weatherCode) {
+export const getIcon = (iconId) => {
+    switch(iconId) {
         case "01d": 
             return sunny;
         case "01n": 
@@ -57,6 +57,49 @@ export const getIcon = (weatherCode) => {
         case "50n": 
             return nt_fog;
         default: return unknown;
+    }
+}
+
+export const getBackground = (iconId) => {
+    switch(iconId) {
+        case "01d": 
+            return 'linear-gradient(180deg, #00A3FF 0%, rgba(255, 255, 255, 0) 100%)';
+        case "01n": 
+            return 'linear-gradient(180deg, #332F47 0%, rgba(255, 255, 255, 0) 100%)'
+        case "02d": 
+            return 'linear-gradient(180deg, #00A3FF 0%, rgba(255, 255, 255, 0) 100%)';
+        case "02n": 
+            return 'linear-gradient(180deg, #332F47 0%, rgba(255, 255, 255, 0) 100%)'
+        case "03d": 
+            return 'linear-gradient(180deg, #8A8A8A 0%, rgba(255, 255, 255, 0) 100%)';
+        case "03n": 
+            return 'linear-gradient(180deg, #332F47 0%, rgba(255, 255, 255, 0) 100%)'
+        case "04d": 
+            return 'linear-gradient(180deg, #8A8A8A 0%, rgba(255, 255, 255, 0) 100%)';
+        case "04n": 
+            return 'linear-gradient(180deg, #332F47 0%, rgba(255, 255, 255, 0) 100%)'
+        case "09d": 
+            return 'linear-gradient(180deg, #2F6380 0%, rgba(255, 255, 255, 0) 100%)';
+        case "09n": 
+            return 'linear-gradient(180deg, #332F47 0%, rgba(255, 255, 255, 0) 100%)'
+        case "10d": 
+            return 'linear-gradient(180deg, #2F6380 0%, rgba(255, 255, 255, 0) 100%)';
+        case "10n": 
+            return 'linear-gradient(180deg, #332F47 0%, rgba(255, 255, 255, 0) 100%)'
+        case "11d": 
+            return 'linear-gradient(180deg, #160054 0%, rgba(255, 255, 255, 0) 100%)';
+        case "11n": 
+            return 'linear-gradient(180deg, #332F47 0%, rgba(255, 255, 255, 0) 100%)'
+        case "13d": 
+            return 'linear-gradient(180deg, #8A8A8A 0%, rgba(255, 255, 255, 0) 100%)';
+        case "13n": 
+            return 'linear-gradient(180deg, #332F47 0%, rgba(255, 255, 255, 0) 100%)'
+        case "50d": 
+            return 'linear-gradient(180deg, #8A8A8A 0%, rgba(255, 255, 255, 0) 100%)';
+        case "50n": 
+            return 'linear-gradient(180deg, #332F47 0%, rgba(255, 255, 255, 0) 100%)'
+        default: return 'linear-gradient(180deg, #00A3FF 0%, rgba(255, 255, 255, 0) 100%)'
+        ;
     }
 }
 

@@ -2,13 +2,13 @@ import styled from "styled-components";
 import Day from "./Components/Day";
 import Hero from "./Components/Hero";
 import Today from "./Components/Today";
-import { getLocation, getCurrentWeather, getIcon } from "./functions"
+import { getLocation, getCurrentWeather, getIcon, getBackground } from "./functions"
 import { useEffect, useState } from "react"
 import unknown from "./images/weather_icons/unknown.svg"
 import Loading from "./Components/Loading";
 
 const Main = styled.div`
-  background: skyblue;
+  background: ${props => props.background};
   min-height: 100vh;
   width: calc(100vw -4rem);
   padding: 2rem;
@@ -42,9 +42,9 @@ const weekDays = [
   'Lö',
   'Sö',
 ]
-
+//background={getBackground(weather.current.iconId)}
   return (
-    <Main>
+    <Main background={getBackground(weather ? weather.current.weather[0].icon : '')}> 
       {weather ? "" : <Loading>Fetching data</Loading>}
       <Hero temperature={weather ? Math.round(weather.current.temp) : '-'}></Hero>
       <Today wind={weather ? weather.current.wind_speed : '-'} hourly={weather ? weather.hourly : undefined} icon={weather ? getIcon(weather.current.weather[0].icon) : unknown}/>
