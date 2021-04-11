@@ -11,10 +11,10 @@ const Center = styled.div`
     align-items: center;
 `
 
-const P = styled.p`
-    color: white; 
-    font-size: 2rem;
-`
+// const P = styled.p`
+//     color: white; 
+//     font-size: 2rem;
+// `
 
 const Img = styled.img`
     height: 10rem;
