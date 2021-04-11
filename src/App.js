@@ -5,6 +5,7 @@ import Today from "./Components/Today";
 import { getLocation, getCurrentWeather, getIcon } from "./functions"
 import { useEffect, useState } from "react"
 import unknown from "./images/weather_icons/unknown.svg"
+import Loading from "./Components/Loading";
 
 const Main = styled.div`
   background: skyblue;
@@ -44,7 +45,7 @@ const weekDays = [
 
   return (
     <Main>
-      {/* {weather ? "" : <Loading></Loading>} */}
+      {weather ? "" : <Loading>Fetching data</Loading>}
       <Hero temperature={weather ? Math.round(weather.current.temp) : '-'}></Hero>
       <Today wind={weather ? weather.current.wind_speed : '-'} hourly={weather ? weather.hourly : undefined} icon={weather ? getIcon(weather.current.weather[0].icon) : unknown}/>
       {weather ? weather.daily.map((day)=>(
