@@ -16,7 +16,10 @@
    style="enable-background:new 0 0 64 64;"
    xml:space="preserve"
    sodipodi:docname="nt_partlycloudy.svg"
-   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"><metadata
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"
+   inkscape:export-filename="/Users/hugosundberg/Local documents/Git/react_weather/public/nt_partlycloudy_rounded.png"
+   inkscape:export-xdpi="288.16"
+   inkscape:export-ydpi="288.16"><metadata
    id="metadata844"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
@@ -45,15 +48,15 @@
    guidetolerance="10"
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
-   inkscape:window-width="1440"
-   inkscape:window-height="844"
+   inkscape:window-width="1920"
+   inkscape:window-height="1052"
    id="namedview840"
    showgrid="false"
-   inkscape:zoom="5.2946039"
+   inkscape:zoom="6.8723656"
    inkscape:cx="32.441917"
    inkscape:cy="28.640737"
-   inkscape:window-x="0"
-   inkscape:window-y="69"
+   inkscape:window-x="1440"
+   inkscape:window-y="0"
    inkscape:window-maximized="0"
    inkscape:current-layer="layer1" />
 <style
@@ -74,7 +77,8 @@
      height="63.964207"
      x="0"
      y="0.15015072"
-     ry="10.660702" /></g><g
+     ry="10.660702"
+     rx="0" /></g><g
    inkscape:groupmode="layer"
    id="layer2"
    inkscape:label="Foreground"
