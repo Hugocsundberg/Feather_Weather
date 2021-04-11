@@ -1,5 +1,4 @@
 import { React } from 'react';
-import { useEffect, useState } from "react"
 import styled from 'styled-components';
 import DayContainer from './DayContainer';
 import Text from './Text';

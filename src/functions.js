@@ -53,9 +53,9 @@ export const getIcon = (weatherCode) => {
         case "13n": 
             return nt_snow;
         case "50d": 
-            return nt_sunny;
+            return fog;
         case "50n": 
-            return nt_sunny;
+            return nt_fog;
         default: return unknown;
     }
 }

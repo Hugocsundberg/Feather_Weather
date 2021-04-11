@@ -6,12 +6,6 @@ import { getLocation, getCurrentWeather, getIcon } from "./functions"
 import { useEffect, useState } from "react"
 import unknown from "./images/weather_icons/unknown.svg"
 
-
-
-const iconMap = {
-
-}
-
 const Main = styled.div`
   background: skyblue;
   min-height: 100vh;
