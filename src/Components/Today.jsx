@@ -90,7 +90,7 @@ const Today = (props) => {
                         <Img src={props.icon} alt={props.icon_Alt}/>
                     </FixWidth>
                     <FixWidth>
-                        <Text top=".3rem" align={'left'}>{`${Math.round(props.wind)}m/s`}</Text>
+                        <Text align={'left'}>{`${Math.round(props.wind)}m/s`}</Text>
                     </FixWidth>
                 </Flex>
                 <Text>Nu</Text>
