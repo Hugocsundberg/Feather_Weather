@@ -3,18 +3,18 @@
   "name": "Feather Weather",
   "icons": [
     {
-      "src": "nt_partlycloudy.svg",
+      "src": "nt_partlycloudy",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/svg+xml"
+      "type": "image/x-icon"
     },
     {
-      "src": "nt_partlycloudy.svg",
-      "type": "image/svg+xml",
+      "src": "nt_partlycloudy.png",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "nt_partlycloudy.svg",
-      "type": "image/svg+xml",
+      "src": "nt_partlycloudy.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],
@@ -22,4 +22,5 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
+  
 }
