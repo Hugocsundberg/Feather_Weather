@@ -2,29 +2,14 @@ import styled from "styled-components";
 import Day from "./Components/Day";
 import Hero from "./Components/Hero";
 import Today from "./Components/Today";
-import { getLocation, getCurrentWeather } from "./functions"
+import { getLocation, getCurrentWeather, getIcon } from "./functions"
 import { useEffect, useState } from "react"
+import unknown from "./images/weather_icons/unknown.svg"
 
-import sunny from "./images/weather_icons/sunny.svg";
-import cloudy from "./images/weather_icons/cloudy.svg";
-import fog from "./images/weather_icons/fog.svg";
-import mostlycloudy from "./images/weather_icons/mostlycloudy.svg";
-import mostlysunny from "./images/weather_icons/mostlysunny.svg";
-import rain from "./images/weather_icons/rain.svg";
-import snow from "./images/weather_icons/snow.svg";
-import tstorms from "./images/weather_icons/tstorms.svg";
-//Nt
-import nt_sunny from "./images/weather_icons/nt_sunny.svg";
-import nt_cloudy from "./images/weather_icons/nt_cloudy.svg";
-import nt_fog from "./images/weather_icons/nt_fog.svg";
-import nt_mostlycloudy from "./images/weather_icons/nt_mostlycloudy.svg";
-import nt_mostlysunny from "./images/weather_icons/nt_mostlysunny.svg";
-import nt_rain from "./images/weather_icons/nt_rain.svg";
-import nt_snow from "./images/weather_icons/nt_snow.svg";
-import nt_tstorms from "./images/weather_icons/nt_tstorms.svg";
+
 
 const iconMap = {
-  "10n": rain
+
 }
 
 const Main = styled.div`
@@ -35,26 +20,29 @@ const Main = styled.div`
 ` 
 
 function App() {
-  const [today, settoday] = useState();
+  const [weather, setweather] = useState();
 
   useEffect(()=>{
     getLocation().then((data)=> {
+      console.log(`lat: ${data.coords.latitude} long: ${data.coords.longitude}`)
       getCurrentWeather(data.coords.latitude, data.coords.longitude, (data)=>{
-        settoday(data)
+        setweather(data)
      })
    })
   }, [])
 
  useEffect(()=>{
-  console.log('Today:')
-  console.log(today)
-}, [today])
+   if(weather) {
+     console.log('Weather:')
+     console.log(weather)
+   }
+}, [weather])
 
   return (
     <Main>
-      <Hero temperature={today ? today.main.temp : '-'}></Hero>
-      <Today icon={iconMap["10n"]}/>
-      <Day icon={sunny} temperature="22" day="Ti"/>
+      <Hero temperature={weather ? Math.round(weather.current.temp) : '-'}></Hero>
+      <Today hourly={weather ? weather.hourly : undefined} icon={weather ? getIcon(weather.current.weather[0].icon) : unknown}/>
+      <Day temperature="22" day="Ti"/>
     </Main>
   );
 }

@@ -1,8 +1,10 @@
-import React from 'react';
+import { React } from 'react';
+import { useEffect, useState } from "react"
 import styled from 'styled-components';
 import DayContainer from './DayContainer';
 import Text from './Text';
-import sunny from "../images/weather_icons/sunny.svg";
+import { getIcon } from '../functions';
+
 
 const FlexContainer = styled.div`
     display:flex;
@@ -34,10 +36,20 @@ const BottomIcons = styled.div`
     justify-content: space-between;
 `
 
+const BottomTemperature = styled.div`
+    margin-top: 1rem;
+    width: calc(100% - 14px);
+    display: flex; 
+    justify-content: space-between;
+    transform: translateX(4px)
+`
+
 const BottomHours = styled.div`
     width: calc(100% - 17px);
     display: flex; 
     justify-content: space-between;
+    margin-top: .8rem;
+    color: gray;
 `
 
 const CenterDiv = styled.div`
@@ -51,35 +63,39 @@ const P = styled.p`
 `
 
 const Today = (props) => {
+
+    const nineHours = []
+    if(props.hourly) {
+        for(let i = 1; i < 10; i++) {
+            nineHours.push(props.hourly[i])
+            console.log(props.hourly[i])
+        }
+    }
+    
     return (
         <DayContainer>
             <FlexContainer>
                 <Top>
                     <Img src={props.icon} alt={props.icon_Alt}/>
-                    <Text>Idag</Text>
+                    <Text>Nu</Text>
                 </Top>
+                <CenterDiv>
+                    <BottomTemperature>
+                    {nineHours.map((day, index) => (
+                            <P key={index}>{`${Math.round(day.temp)}°`}</P>
+                        ))}
+                    </BottomTemperature>
+                </CenterDiv>
                 <BottomIcons>
-                    <ImgSmall src={sunny} alt={'sun is shining bro'}/>
-                    <ImgSmall src={sunny} alt={'sun is shining bro'}/>
-                    <ImgSmall src={sunny} alt={'sun is shining bro'}/>
-                    <ImgSmall src={sunny} alt={'sun is shining bro'}/>
-                    <ImgSmall src={sunny} alt={'sun is shining bro'}/>
-                    <ImgSmall src={sunny} alt={'sun is shining bro'}/>
-                    <ImgSmall src={sunny} alt={'sun is shining bro'}/>
-                    <ImgSmall src={sunny} alt={'sun is shining bro'}/>
-                    <ImgSmall src={sunny} alt={'sun is shining bro'}/>
+                    {nineHours.map((day, index) => (
+                        <ImgSmall key={index} src={getIcon(day.weather[0].icon)} alt={`weather is: ${day.weather[0].description}`}/>                
+                    ))}
                 </BottomIcons>
                 <CenterDiv>
                     <BottomHours>
-                        <P>09</P>
-                        <P>10</P>
-                        <P>11</P>
-                        <P>12</P>
-                        <P>13</P>
-                        <P>14</P>
-                        <P>15</P>
-                        <P>16</P>
-                        <P>17</P>
+                    {nineHours.map((day, index) => (
+                        <P key={index}>{new Date(day.dt * 1000).getHours() < 10 ? `0${new Date(day.dt * 1000).getHours()}` : new Date(day.dt * 1000).getHours()}</P> //<ImgSmall  src={getIcon(day.weather[0].icon)} alt={`weather is: ${day.weather[0].description}`}/>                
+                    ))}
                     </BottomHours>
                 </CenterDiv>
             </FlexContainer>

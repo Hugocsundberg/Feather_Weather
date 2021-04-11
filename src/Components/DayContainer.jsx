@@ -8,6 +8,7 @@ const Container = styled.div`
     margin-top: ${props => props.top};
     /* padding:.5rem 1.5rem 1rem 1.5rem; */
     padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
 `
 
 const DayContainer = (props) => {
