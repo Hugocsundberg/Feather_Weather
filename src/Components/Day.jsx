@@ -31,9 +31,10 @@ const Day = (props) => {
                         <Text top=".3rem" align={'left'} size="1rem">{`${Math.round(props.wind)}m/s`}</Text>
                     </FixWidth>
                 </Flex>
-                    <FixWidth>
-                        <Text align={'right'}>{`${props.day}`}</Text>
-                    </FixWidth>
+                <Text size="1rem">{props.description}</Text>
+                <FixWidth>
+                    <Text align={'right'}>{`${props.day}`}</Text>
+                </FixWidth>
             </Flex>
         </DayContainer>        
     );

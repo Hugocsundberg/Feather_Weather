@@ -56,7 +56,7 @@ const weekDays = [
         <Hero temperature={weather ? Math.round(weather.current.temp) : '-'}></Hero>
         <Today wind={weather ? weather.current.wind_speed : '-'} hourly={weather ? weather.hourly : undefined} icon={weather ? getIcon(weather.current.weather[0].icon) : unknown}/>
         {weather ? weather.daily.map((day, index)=>(
-        <Day key={index} wind={day.wind_speed} icon={getIcon(day.weather[0].icon)} temperature={Math.round(day.temp.day)} day={weekDays[new Date(day.dt * 1000).getDay()]}/>
+        <Day description={day.weather[0].description} key={index} wind={day.wind_speed} icon={getIcon(day.weather[0].icon)} temperature={Math.round(day.temp.day)} day={weekDays[new Date(day.dt * 1000).getDay()]}/>
         )) : ""}
       </Container>
     </Main>
