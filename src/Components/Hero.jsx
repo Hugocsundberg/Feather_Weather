@@ -31,7 +31,7 @@ const Hero = (props) => {
     return (
         <Container>
             <Temperature>{`${props.temperature}°`}</Temperature>
-            <Reload onClick={reload} src={reloadIcon}></Reload>
+            <Reload onClick={reload} onTouchStart={reload} src={reloadIcon}></Reload>
         </Container>
     );
 }
