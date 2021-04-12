@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Day from "./Components/Day";
 import Hero from "./Components/Hero";
 import Today from "./Components/Today";
-import { getLocation, getCurrentWeather, getIcon, getBackground, reload, getCityFromCoords } from "./functions"
+import { getLocation, getCurrentWeather, getIcon, getBackground, getCityFromCoords } from "./functions"
 import { useEffect, useState } from "react"
 import Loading from "./Components/Loading";
 
