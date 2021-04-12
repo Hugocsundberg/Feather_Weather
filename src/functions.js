@@ -120,6 +120,15 @@ export const getCurrentWeather = (lat, lon, callback) => {
     })
 }
 
+export const getCityFromCoords = (lat, lon) => {
+    const p = new Promise((resolve)=>{
+        fetch(`https://eu1.locationiq.com/v1/reverse.php?key=pk.2cda453ffc73e0de3cd65863fccb3406&accept-language=native&lat=${lat}&lon=${lon}&format=json`)
+        .then(data => data.json())
+        .then(data => resolve(data))
+    })
+    return p
+}
+
 export const reload = () => {
     navigator.vibrate(30);
     window.location.reload()
