@@ -119,3 +119,8 @@ export const getCurrentWeather = (lat, lon, callback) => {
         callback(data)
     })
 }
+
+export const reload = () => {
+    navigator.vibrate(100);
+    window.location.reload()
+}
