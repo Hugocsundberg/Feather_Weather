@@ -18,9 +18,6 @@ top: 3.2rem;
 height: 1.4rem;
 transition: .5s;
 cursor: pointer;
-:active {
-    transform: rotate(360deg);
-}
 `
 
 const Container = styled.div`
