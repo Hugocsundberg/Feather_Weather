@@ -93,6 +93,9 @@ const Today = (props) => {
                         <Text align={'left'}>{`${Math.round(props.wind)}m/s`}</Text>
                     </FixWidth>
                 </Flex>
+                <FixWidth>
+                    <Text size="1rem">{props.description}</Text>
+                </FixWidth>
                 <Text>Nu</Text>
                 </Top>
                 <CenterDiv>
