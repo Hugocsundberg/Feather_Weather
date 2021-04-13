@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import reloadIcon from '../images/reload.svg'
-import { reload } from '../functions'
 import { getSunTime, getSunIcon } from '../functions';
 
 
