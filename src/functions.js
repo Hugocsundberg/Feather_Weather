@@ -133,7 +133,7 @@ export const getCityFromCoords = (lat, lon) => {
 
 export const reload = () => {
     navigator.vibrate(30);
-    window.location.reload()
+    window.location.reload();
 }
 
 export const getSunTime = (sunup, sundown, nextSunrise) => {

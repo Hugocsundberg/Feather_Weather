@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Day from "./Components/Day";
 import Hero from "./Components/Hero";
 import Today from "./Components/Today";
-import { getLocation, getCurrentWeather, getIcon, getBackground, getCityFromCoords } from "./functions"
+import { getLocation, getCurrentWeather, getIcon, getBackground, getCityFromCoords, reload } from "./functions"
 import { useEffect, useState } from "react"
 import Loading from "./Components/Loading";
 
@@ -28,8 +28,14 @@ const Container = styled.div`
 function App() {
   const [weather, setweather] = useState();
   const [city, setcity] = useState();
-  // const [inactive, setinactive] = useState(0);
+  const [lastReload] = useState(Date.now());
 
+    const onFocus = () => {
+        if(Date.now() - lastReload > (10 * 60 * 1000)) {
+          reload()
+        }
+    }
+  
   useEffect(()=>{
     getLocation().then((data)=> {
       console.log(`lat: ${data.coords.latitude} long: ${data.coords.longitude}`)
@@ -39,27 +45,15 @@ function App() {
       getCityFromCoords(data.coords.latitude, data.coords.longitude)
       .then(data => setcity(data))
    })
+
+   window.addEventListener('focus', onFocus)
+   
+   return () => {
+    window.removeEventListener('focus', onFocus)
+   };
   }, [])
 
-  // useEffect(() => {
-  //   window.addEventListener('blur', (e)=>{
-  //     setinactive(Date.now())
-  //   })
-  //   window.addEventListener('focus', (e)=>{
-  //     if(Date.now() - inactive > (5 * 2 * 1000))
-  //     reload()
-  //   })
-  //   return () => {
-  //     window.removeEventListener('blur', (e)=>{
-  //       setinactive(Date.now())
-  //     })
-  //     window.removeEventListener('focus', (e)=>{
-  //       if(Date.now() - inactive > (5 * 2 * 1000))
-  //       reload()
-  //     })
-  //   };
-  // }, [inactive]);
-
+  //Logs for debugging purpuse
  useEffect(()=>{
    if(weather) {
      console.log('Weather:')
