@@ -47,7 +47,7 @@ const Hero = (props) => {
     return (
         <Container>
             <Temperature>{`${props.temperature}°`}</Temperature>
-            <P>{`${getSunTime(props.sunup, props.sundown, props.dayafter)} timmar`}</P>
+            <P>{`${getSunTime(props.sunup, props.sundown, props.dayafter)}`}</P>
             <IconContainer>{getSunIcon(props.sunup, props.sundown, '2rem')}</IconContainer> 
             <Reload onClick={reload} onTouchStart={reload} src={reloadIcon}></Reload>
         </Container>

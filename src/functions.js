@@ -140,13 +140,13 @@ export const getSunTime = (sunup, sundown, nextSunrise) => {
     //Returns hours until sun, and expects timestamp in seconds
     if(Date.now() < sunup * 1000) {
         //Before sunrise
-        return Math.round(((sunup * 1000) - Date.now()) / 1000 / 60 / 60)
+        return `Soluppgång: ${Math.round(((sunup * 1000) - Date.now()) / 1000 / 60 / 60)}h`
     } else if(Date.now() > sunup * 1000 && Date.now() < sundown * 1000) {
         //after sunrise, before sunset
-        return Math.round(((sundown * 1000) - Date.now()) / 1000 / 60 / 60)
+        return `Solnedgång: ${Math.round(((sundown * 1000) - Date.now()) / 1000 / 60 / 60)}h`
     } else {
         //after sunset
-        return Math.round(((nextSunrise * 1000) - Date.now()) / 1000 / 60 / 60)
+        return `Soluppgång: ${Math.round(((nextSunrise * 1000) - Date.now()) / 1000 / 60 / 60)}h`
     }
 }
 export const getSunIcon = (sunup, sundown, size) => {
