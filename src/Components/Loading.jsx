@@ -7,6 +7,7 @@ import loadercloud from '../images/weather_icons/loadercloud.svg'
 const Center = styled.div`
     height: calc(100vh - 4rem);
     width: 100%;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center; 
