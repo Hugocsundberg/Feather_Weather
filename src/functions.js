@@ -153,7 +153,7 @@ export const getSunTime = (sunup, sundown, nextSunrise) => {
         return `Solnedgång: ${Math.round(((sundown * 1000) - Date.now()) / 1000 / 60 / 60)}h`
     } else {
         //after sunset
-        return `Soluppgång: ${Math.round(((nextSunrise * 1000) - Date.now()) / 1000 / 60 / 60)}h`
+        return `Soluppgång: ${Math.round(((nextSunrise.sunrise * 1000) - Date.now()) / 1000 / 60 / 60)}h`
     }
 }
 export const getSunIcon = (sunup, sundown, size) => {
