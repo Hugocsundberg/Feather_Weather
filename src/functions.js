@@ -140,9 +140,16 @@ export const getSunTime = (sunup, sundown, nextSunrise) => {
     //Returns hours until sun, and expects timestamp in seconds
     if(Date.now() < sunup * 1000) {
         //Before sunrise
+        if(((sunup * 1000) - Date.now()) / 1000 / 60 / 60 < 1) {
+            return `Soluppgång: ${Math.round(((sunup * 1000) - Date.now()) / 1000 / 60)}m`    
+        }
         return `Soluppgång: ${Math.round(((sunup * 1000) - Date.now()) / 1000 / 60 / 60)}h`
     } else if(Date.now() > sunup * 1000 && Date.now() < sundown * 1000) {
         //after sunrise, before sunset
+        console.log(((sundown * 1000) - Date.now()) / 1000 / 60 / 60)
+        if(((sundown * 1000) - Date.now()) / 1000 / 60 / 60 < 1) {
+            return `Solnedgång: ${Math.round(((sundown * 1000) - Date.now()) / 1000 / 60)}m`
+        }
         return `Solnedgång: ${Math.round(((sundown * 1000) - Date.now()) / 1000 / 60 / 60)}h`
     } else {
         //after sunset
