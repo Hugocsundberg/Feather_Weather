@@ -82,7 +82,7 @@ const weekDays = [
       <Container>
         {weather ?
         <>
-          <Location>{city ? (city.address.neighbourhood ?? city.address.suburb ?? city.address.city) : ''}</Location>
+          <Location>{city ? (city.address.suburb ?? city.address.city ?? city.address.neighbourhood) : ''}</Location>
           <Hero dayafter={weather.daily[1]} sunup={weather.current.sunrise} sundown={weather.current.sunset} temperature={Math.round(weather.current.temp)}></Hero>
           <Today description={weather.current.weather[0].description} wind={weather.current.wind_speed} hourly={weather.hourly} icon={getIcon(weather.current.weather[0].icon)}/>
           {weather.daily.map((day, index)=>(
