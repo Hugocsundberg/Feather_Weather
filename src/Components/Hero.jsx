@@ -42,13 +42,17 @@ const P = styled.p`
     bottom: 0.9rem;
 `
 
+const ReloadButtonContainer = styled.button`
+
+`
+
 const Hero = (props) => {
     return (
         <Container>
             <Temperature>{`${props.temperature}°`}</Temperature>
             <P>{`${getSunTime(props.sunup, props.sundown, props.dayafter)}`}</P>
             <IconContainer>{getSunIcon(props.sunup, props.sundown, '2rem')}</IconContainer> 
-            <Reload onClick={reload} onTouchStart={reload} src={reloadIcon}></Reload>
+            <ReloadButtonContainer onClick={reload} onTouchStart={reload}><Reload src={reloadIcon}></Reload></ReloadButtonContainer>
         </Container>
     );
 }
