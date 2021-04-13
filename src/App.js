@@ -89,7 +89,7 @@ const weekDays = [
         {weather ?
         <>
           <Location>{city ? `${city.address.city}, ${city.address.suburb}` : ''}</Location>
-          <Hero temperature={Math.round(weather.current.temp)}></Hero>
+          <Hero dayafter={weather.daily[1]} sunup={weather.current.sunrise} sundown={weather.current.sunset} temperature={Math.round(weather.current.temp)}></Hero>
           <Today wind={weather.current.wind_speed} hourly={weather.hourly} icon={getIcon(weather.current.weather[0].icon)}/>
           {weather.daily.map((day, index)=>(
           <Day description={day.weather[0].description} key={index} wind={day.wind_speed} icon={getIcon(day.weather[0].icon)} temperature={Math.round(day.temp.day)} day={weekDays[new Date(day.dt * 1000).getDay()]}/>  

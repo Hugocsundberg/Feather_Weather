@@ -17,6 +17,8 @@ import nt_snow from "./images/weather_icons/nt_snow.svg";
 import nt_tstorms from "./images/weather_icons/nt_tstorms.svg";
 //Unknown
 import unknown from "./images/weather_icons/unknown.svg"
+//Other
+import { WiSunrise, WiSunset } from "react-icons/wi";
 
 export const getIcon = (iconId) => {
     switch(iconId) {
@@ -132,4 +134,31 @@ export const getCityFromCoords = (lat, lon) => {
 export const reload = () => {
     navigator.vibrate(30);
     window.location.reload()
+}
+
+export const getSunTime = (sunup, sundown, nextSunrise) => {
+    //Returns hours until sun, and expects timestamp in seconds
+    if(Date.now() < sunup * 1000) {
+        //Before sunrise
+        return Math.round(((sunup * 1000) - Date.now()) / 1000 / 60 / 60)
+    } else if(Date.now() > sunup * 1000 && Date.now() < sundown * 1000) {
+        //after sunrise, before sunset
+        return Math.round(((sundown * 1000) - Date.now()) / 1000 / 60 / 60)
+    } else {
+        //after sunset
+        return Math.round(((nextSunrise * 1000) - Date.now()) / 1000 / 60 / 60)
+    }
+}
+export const getSunIcon = (sunup, sundown, size) => {
+    //Returns sunrise or sunset image, and expects timestamp in seconds
+    if(Date.now() < sunup * 1000) {
+        //Before sunrise
+        return <WiSunrise size={size} color="white"/>
+    } else if(Date.now() > sunup * 1000 && Date.now() < sundown * 1000) {
+        //after sunrise, before sunset
+        return <WiSunset size={size} color="white"/>
+    } else {
+        //after sunset
+        return <WiSunrise size={size} color="white"/>
+    }
 }
