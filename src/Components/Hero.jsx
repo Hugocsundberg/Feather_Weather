@@ -17,9 +17,7 @@ right: 0.5rem;
 top: 3.2rem;
 height: 1.4rem;
 transition: .5s;
-:hover {
-    transform: rotate(90deg);
-}
+cursor: pointer;
 :active {
     transform: rotate(360deg);
 }
@@ -42,17 +40,13 @@ const P = styled.p`
     bottom: 0.9rem;
 `
 
-const ReloadButtonContainer = styled.button`
-
-`
-
 const Hero = (props) => {
     return (
         <Container>
             <Temperature>{`${props.temperature}°`}</Temperature>
             <P>{`${getSunTime(props.sunup, props.sundown, props.dayafter)}`}</P>
             <IconContainer>{getSunIcon(props.sunup, props.sundown, '2rem')}</IconContainer> 
-            <ReloadButtonContainer onClick={reload} onTouchStart={reload}><Reload src={reloadIcon}></Reload></ReloadButtonContainer>
+            <Reload onClick={reload} onTouchStart={reload} src={reloadIcon}></Reload>
         </Container>
     );
 }
