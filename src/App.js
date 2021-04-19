@@ -13,6 +13,7 @@ const Main = styled.div`
   background: ${props => props.background};
   min-height: 100vh;
   padding: 2rem;
+  animation: fadeIn 2s both;
 ` 
 
 const Location = styled.p`
@@ -21,16 +22,20 @@ const Location = styled.p`
   margin: 0;
 `
 
-const Container = styled.div`
-  max-width: 40rem;
-  width: calc(100vw - 4rem);
-`
+  const Container = styled.div`
+    max-width: 40rem;
+    width: calc(100vw - 4rem);
+    opacity: 0;
+    ${props => props.weather ? `opacity: 1; transition: 2s;` : `opacity: 0;`
+  }
+  `
 
 function App() {
   const [weather, setweather] = useState();
   const [city, setcity] = useState();
   const [lastReload] = useState(Date.now());
   const [errorMessage, seterrorMessage] = useState(undefined);
+  const [weatherLoaded, setweatherLoaded] = useState(false);
 
     const onFocus = () => {
         if(Date.now() - lastReload > (10 * 60 * 1000)) {
@@ -39,10 +44,14 @@ function App() {
     }
   
   useEffect(()=>{
+    console.log(weatherLoaded)
     getLocation().then(data=> {
       console.log(`lat: ${data.coords.latitude} long: ${data.coords.longitude}`)
       getCurrentWeather(data.coords.latitude, data.coords.longitude, (data)=>{
         setweather(data)
+        setTimeout(() => {
+          setweatherLoaded(true)        
+        }, 1);
       })
       getCityFromCoords(data.coords.latitude, data.coords.longitude)
       .then(data => setcity(data))
@@ -68,6 +77,12 @@ function App() {
      console.log(city)
    }
 }, [city])
+ useEffect(()=>{
+   if(city) {
+     console.log('WeatherLoaded:')
+     console.log(weatherLoaded)
+   }
+}, [weatherLoaded])
 
 const weekDays = [
   'Må', 
@@ -81,8 +96,8 @@ const weekDays = [
 //background={getBackground(weather.current.iconId)}
   return (
     <Main background={getBackground(weather ? weather.current.weather[0].icon : '')}>
-      <Container>
         {weather ?
+      <Container weather={weatherLoaded}>
         <>
           <Location>{city ? (city.address.suburb ?? city.address.city ?? city.address.neighbourhood) : ''}</Location>
           <Hero dayafter={weather.daily[1]} sunup={weather.current.sunrise} sundown={weather.current.sunset} temperature={Math.round(weather.current.temp)}></Hero>
@@ -92,10 +107,12 @@ const weekDays = [
             ))}
           <p>Källa: <a href="https://openweathermap.org/">Openweathermap</a></p>
         </> 
-        : 
-        <Loading>Fetching data</Loading>}
-        {errorMessage ? <Error>{errorMessage}</Error> : ''}
       </Container>
+        :
+        <Container weather={true}>
+          <Loading>Fetching data</Loading>
+          {errorMessage ? <Error>{errorMessage}</Error> : ''}
+        </Container>}
     </Main>
   );
 }
