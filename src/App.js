@@ -44,9 +44,8 @@ function App() {
     }
   
   useEffect(()=>{
-    console.log(weatherLoaded)
+    // console.log(weatherLoaded)
     getLocation().then(data=> {
-      console.log(`lat: ${data.coords.latitude} long: ${data.coords.longitude}`)
       getCurrentWeather(data.coords.latitude, data.coords.longitude, (data)=>{
         setweather(data)
         setTimeout(() => {
@@ -65,24 +64,24 @@ function App() {
   }, [])
 
   //Logs for debugging purpuse
- useEffect(()=>{
-   if(weather) {
-     console.log('Weather:')
-     console.log(weather)
-   }
-}, [weather])
- useEffect(()=>{
-   if(city) {
-     console.log('City:')
-     console.log(city)
-   }
-}, [city])
- useEffect(()=>{
-   if(city) {
-     console.log('WeatherLoaded:')
-     console.log(weatherLoaded)
-   }
-}, [weatherLoaded])
+//  useEffect(()=>{
+//    if(weather) {
+//      console.log('Weather:')
+//      console.log(weather)
+//    }
+// }, [weather])
+//  useEffect(()=>{
+//    if(city) {
+//      console.log('City:')
+//      console.log(city)
+//    }
+// }, [city])
+//  useEffect(()=>{
+//    if(city) {
+//      console.log('WeatherLoaded:')
+//      console.log(weatherLoaded)
+//    }
+// }, [weatherLoaded])
 
 const weekDays = [
   'Må', 

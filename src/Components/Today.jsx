@@ -77,7 +77,7 @@ const Today = (props) => {
     if(props.hourly) {
         for(let i = 1; i < 10; i++) {
             nineHours.push(props.hourly[i])
-            console.log(props.hourly[i])
+            // console.log(props.hourly[i])
         }
     }
     
