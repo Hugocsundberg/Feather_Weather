@@ -109,7 +109,7 @@ export const getLocation = () => {
     const p = new Promise((resolve, reject)=>{
         navigator.geolocation.getCurrentPosition(data => {
             resolve(data);
-        }, ()=>{reject("Not able to get position")})
+        }, ()=>{reject("Appen behöver tillgång till plats för att fungera")})
     })
     return p
 }

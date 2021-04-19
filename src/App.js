@@ -5,6 +5,7 @@ import Today from "./Components/Today";
 import { getLocation, getCurrentWeather, getIcon, getBackground, getCityFromCoords, reload } from "./functions"
 import { useEffect, useState } from "react"
 import Loading from "./Components/Loading";
+import Error from "./Components/Error";
 
 const Main = styled.div`
   display: flex; 
@@ -29,6 +30,7 @@ function App() {
   const [weather, setweather] = useState();
   const [city, setcity] = useState();
   const [lastReload] = useState(Date.now());
+  const [errorMessage, seterrorMessage] = useState(undefined);
 
     const onFocus = () => {
         if(Date.now() - lastReload > (10 * 60 * 1000)) {
@@ -37,14 +39,14 @@ function App() {
     }
   
   useEffect(()=>{
-    getLocation().then((data)=> {
+    getLocation().then(data=> {
       console.log(`lat: ${data.coords.latitude} long: ${data.coords.longitude}`)
       getCurrentWeather(data.coords.latitude, data.coords.longitude, (data)=>{
         setweather(data)
       })
       getCityFromCoords(data.coords.latitude, data.coords.longitude)
       .then(data => setcity(data))
-   })
+   }).catch(data=>seterrorMessage(data))
 
    window.addEventListener('focus', onFocus)
    
@@ -86,11 +88,13 @@ const weekDays = [
           <Hero dayafter={weather.daily[1]} sunup={weather.current.sunrise} sundown={weather.current.sunset} temperature={Math.round(weather.current.temp)}></Hero>
           <Today description={weather.current.weather[0].description} wind={weather.current.wind_speed} hourly={weather.hourly} icon={getIcon(weather.current.weather[0].icon)}/>
           {weather.daily.map((day, index)=>(
-          <Day description={day.weather[0].description} key={index} wind={day.wind_speed} icon={getIcon(day.weather[0].icon)} temperature={Math.round(day.temp.day)} day={weekDays[new Date(day.dt * 1000).getDay()]}/>  
-          ))}
+            <Day description={day.weather[0].description} key={index} wind={day.wind_speed} icon={getIcon(day.weather[0].icon)} temperature={Math.round(day.temp.day)} day={weekDays[new Date(day.dt * 1000).getDay()]}/>  
+            ))}
           <p>Källa: <a href="https://openweathermap.org/">Openweathermap</a></p>
         </> 
-        : <Loading>Fetching data</Loading>}
+        : 
+        <Loading>Fetching data</Loading>}
+        {errorMessage ? <Error>{errorMessage}</Error> : ''}
       </Container>
     </Main>
   );
