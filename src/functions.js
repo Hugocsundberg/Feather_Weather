@@ -115,7 +115,7 @@ export const getLocation = () => {
 }
 
 export const getCurrentWeather = (lat, lon, callback) => {
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=57.643231&lon=11.935971&exclude=minutely&lang=se&appid=b47c691c8a0f75f611910b34d9884500&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&lang=se&appid=b47c691c8a0f75f611910b34d9884500&units=metric`)
     .then(data => data.json()) //stream=> stream.json()
     .then(data => {
         callback(data)
