@@ -36,6 +36,7 @@ function App() {
   const [lastReload] = useState(Date.now());
   const [errorMessage, seterrorMessage] = useState(undefined);
   const [weatherLoaded, setweatherLoaded] = useState(false);
+  const [dailyForecast, setdailyForecast] = useState();
 
     const onFocus = () => {
         if(Date.now() - lastReload > (10 * 60 * 1000)) {
@@ -48,6 +49,11 @@ function App() {
     getLocation().then(data=> {
       getCurrentWeather(data.coords.latitude, data.coords.longitude, (data)=>{
         setweather(data)
+        let dailyArray = []
+        for(let i = 1; i < 8; i++) {
+          dailyArray.push(data.daily[i])
+        }
+        setdailyForecast(dailyArray)
         setTimeout(() => {
           setweatherLoaded(true)        
         }, 1);
@@ -84,13 +90,13 @@ function App() {
 // }, [weatherLoaded])
 
 const weekDays = [
+  'Sö',
   'Må', 
   'Ti',
   'On',
   'To',
   'Fr',
   'Lö',
-  'Sö',
 ]
 //background={getBackground(weather.current.iconId)}
   return (
@@ -101,9 +107,9 @@ const weekDays = [
           <Location>{city ? (city.address.suburb ?? city.address.city ?? city.address.neighbourhood) : ''}</Location>
           <Hero dayafter={weather.daily[1]} sunup={weather.current.sunrise} sundown={weather.current.sunset} temperature={Math.round(weather.current.temp)}></Hero>
           <Today description={weather.current.weather[0].description} wind={weather.current.wind_speed} hourly={weather.hourly} icon={getIcon(weather.current.weather[0].icon)}/>
-          {weather.daily.map((day, index)=>(
+          {dailyForecast ? dailyForecast.map((day, index)=>(
             <Day description={day.weather[0].description} key={index} wind={day.wind_speed} icon={getIcon(day.weather[0].icon)} temperature={Math.round(day.temp.day)} day={weekDays[new Date(day.dt * 1000).getDay()]}/>  
-            ))}
+            )) : ''}
           <p>Källa: <a href="https://openweathermap.org/">Openweathermap</a></p>
         </> 
       </Container>
