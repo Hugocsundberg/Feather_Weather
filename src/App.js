@@ -50,7 +50,7 @@ function App() {
       getCurrentWeather(data.coords.latitude, data.coords.longitude, (data)=>{
         setweather(data)
         let dailyArray = []
-        for(let i = 1; i < data.daily.length; i++) {
+        for(let i = 1; i < 8; i++) {
           dailyArray.push(data.daily[i])
         }
         setdailyForecast(dailyArray)
