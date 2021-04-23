@@ -70,12 +70,12 @@ function App() {
   }, [])
 
   //Logs for debugging purpuse
- useEffect(()=>{
-   if(weather) {
-     console.log('Weather:')
-     console.log(weather)
-   }
-}, [weather])
+//  useEffect(()=>{
+//    if(weather) {
+//      console.log('Weather:')
+//      console.log(weather)
+//    }
+// }, [weather])
 //  useEffect(()=>{
 //    if(city) {
 //      console.log('City:')
