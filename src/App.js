@@ -70,12 +70,12 @@ function App() {
   }, [])
 
   //Logs for debugging purpuse
-//  useEffect(()=>{
-//    if(weather) {
-//      console.log('Weather:')
-//      console.log(weather)
-//    }
-// }, [weather])
+ useEffect(()=>{
+   if(weather) {
+     console.log('Weather:')
+     console.log(weather)
+   }
+}, [weather])
 //  useEffect(()=>{
 //    if(city) {
 //      console.log('City:')
@@ -108,7 +108,7 @@ const weekDays = [
           <Hero dayafter={weather.daily[1]} sunup={weather.current.sunrise} sundown={weather.current.sunset} temperature={Math.round(weather.current.temp)}></Hero>
           <Today description={weather.current.weather[0].description} wind={weather.current.wind_speed} hourly={weather.hourly} icon={getIcon(weather.current.weather[0].icon)}/>
           {dailyForecast ? dailyForecast.map((day, index)=>(
-            <Day description={day.weather[0].description} key={index} wind={day.wind_speed} icon={getIcon(day.weather[0].icon)} temperature={Math.round(day.temp.day)} day={weekDays[new Date(day.dt * 1000).getDay()]}/>  
+            <Day description={day.weather[0].description} key={index} wind={day.wind_speed} icon={getIcon(day.weather[0].icon)} temperature={Math.round(day.temp.day)} high={Math.round(day.temp.max)} low={Math.round(day.temp.min)}  day={weekDays[new Date(day.dt * 1000).getDay()]}/>  
             )) : ''}
           <p>Källa: <a href="https://openweathermap.org/">Openweathermap</a></p>
         </> 
