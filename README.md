@@ -5,5 +5,5 @@ This is a continuously evolving project.
 ## Current features
 * Dynamic background gradients based on weather
 * Current, hourly and daily forcast
-* Windspeed, temperature, weather. 
+* Windspeed, max temperature, min temperature, weather. 
 * Time until sunset/sunrise
